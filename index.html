@@ -37,7 +37,6 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
-      background: radial-gradient(circle at top, rgba(201, 162, 77, 0.15), transparent 60%);
     }
 
     .hero {
@@ -54,87 +53,45 @@
       margin-bottom: 1.2rem;
     }
 
-    .hero h1 {
+    h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
       margin-bottom: 1rem;
     }
 
-    .hero h1 span {
+    h1 span {
       color: var(--primary);
     }
 
     .hero p {
-      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto 2.5rem;
       line-height: 1.6;
     }
 
-    /* ===== ALIANÇAS SVG ===== */
-    .rings-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-
-    .ring-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: fadeUp 1.8s ease forwards;
-    }
-
-    .rings-img {
-      width: 220px;
-      max-width: 80%;
-      filter:
-        invert(42%) sepia(85%) saturate(380%) hue-rotate(8deg) brightness(95%) drop-shadow(0 12px 25px rgba(0, 0, 0, 0.25));
-    }
-
-    .ring-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #a07c2c;
-      font-weight: 500;
-    }
-
-    @keyframes fadeUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    /* ===== IMAGENS ===== */
+    /* ===== FOTOS + ALIANÇA ===== */
     .image-pair {
       display: flex;
       gap: 2.5rem;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
 
     .image-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.7rem;
+      gap: 0.6rem;
     }
 
     .image-title {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--primary);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .image-wrapper {
@@ -156,7 +113,20 @@
       object-position: center 10%;
     }
 
-    /* ===== SEÇÃO DO FORMULÁRIO ===== */
+    .rings-between {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .rings-img {
+      width: 160px;
+      filter: invert(42%) sepia(85%) saturate(380%) hue-rotate(8deg)
+        drop-shadow(0 12px 25px rgba(0, 0, 0, 0.25));
+    }
+
+    /* ===== FORM ===== */
     section {
       padding: 4rem 1.5rem;
       display: flex;
@@ -166,7 +136,7 @@
     .card {
       width: 100%;
       max-width: 720px;
-      background: #ffffff;
+      background: #fff;
       border-radius: 20px;
       padding: 2.5rem;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
@@ -174,7 +144,6 @@
 
     .card h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
       text-align: center;
       margin-bottom: 0.5rem;
     }
@@ -202,15 +171,6 @@
       border-radius: 12px;
       border: 1px solid #ddd;
       font-family: 'Poppins', sans-serif;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(201, 162, 77, 0.2);
     }
 
     textarea {
@@ -226,27 +186,66 @@
       background: linear-gradient(135deg, #d6b15b, #b8903f);
       color: #fff;
       font-size: 1rem;
-      font-weight: 500;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
     }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      opacity: 0.95;
+    button.loading {
+      pointer-events: none;
+      color: transparent;
+      position: relative;
+    }
+
+    button.loading::after {
+      content: "";
+      width: 22px;
+      height: 22px;
+      border: 3px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem 3rem;
+      padding: 2rem;
       font-size: 0.85rem;
       color: #777;
     }
 
     footer span {
       color: var(--primary);
-      font-weight: 500;
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #2c2c2c;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     @media (max-width: 480px) {
@@ -256,11 +255,7 @@
       }
 
       .rings-img {
-        width: 180px;
-      }
-      
-      .card {
-        padding: 2rem 1.5rem;
+        width: 130px;
       }
     }
   </style>
@@ -275,60 +270,62 @@
       <h1>Iliene <span>&</span> Junior</h1>
 
       <p>
-        São 25 anos de amor, uma história construída com carinho, parceria e memórias inesquecíveis.
+        São 25 anos de amor, uma história construída com carinho,
+        parceria e memórias inesquecíveis.
         Sua presença tornará esse momento ainda mais especial.
       </p>
 
-      <!-- 💍 ALIANÇAS -->
-      <div class="rings-container">
-        <div class="ring-wrap">
-          <img src="/rings.svg" alt="Alianças" class="rings-img">
-          <span class="ring-label">07/01/2001 • 17/01/2026</span>
-        </div>
-      </div>
-
-      <!-- 📸 FOTOS -->
+      <!-- 📸 FOTOS + ALIANÇA -->
       <div class="image-pair">
+
         <div class="image-block">
-          <span class="image-title">No início</span>
+          <span class="image-title">07 • Janeiro • 2001</span>
           <div class="image-wrapper">
-            <img src="imagem.jpg" alt="Iliene e Junior no início">
+            <img src="imagem.jpg" alt="Casamento">
           </div>
         </div>
 
+        <div class="rings-between">
+          <img src="/rings.svg" class="rings-img" alt="Alianças">
+        </div>
+
         <div class="image-block">
-          <span class="image-title">Hoje</span>
+          <span class="image-title">17 • Janeiro • 2026</span>
           <div class="image-wrapper">
-            <img class="zoom-out" src="imagem2.jpg" alt="Iliene e Junior atualmente">
+            <img src="imagem2.jpg" class="zoom-out" alt="Bodas de Prata">
           </div>
         </div>
+
       </div>
     </div>
   </header>
 
-  <!-- ===== SEÇÃO DO FORMULÁRIO ===== -->
+  <!-- FORM -->
   <section>
     <div class="card">
       <h2>Confirme sua Presença</h2>
       <p>Preencha o formulário abaixo para confirmar sua participação.</p>
 
-      <form action="https://docs.google.com/forms/d/e/1FAIpQLSdOcA6Z0vg3hzpgi8iJmFgyGQ9ERojYxn4ahO0e-0tjL7pZIA/formResponse" method="POST" target="_blank">
+      <form id="presenceForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdOcA6Z0vg3hzpgi8iJmFgyGQ9ERojYxn4ahO0e-0tjL7pZIA/formResponse"
+        method="POST" target="hidden_iframe">
+
         <div>
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="entry.1907201843" placeholder="Digite seu nome completo" required />
+          <label>Nome</label>
+          <input type="text" name="entry.1907201843" required>
         </div>
 
         <div>
-          <label for="telefone">Telefone</label>
-          <input type="tel" id="telefone" name="entry.1963862836" placeholder="(00) 00000-0000" required />
+          <label>Telefone</label>
+          <input type="tel" name="entry.1963862836" required>
         </div>
 
         <div>
-          <label for="nomes">Nomes dos convidados (incluindo você)</label>
-          <textarea id="nomes" name="entry.1267430054" placeholder="Ex: Maria Silva, João Silva" required></textarea>
+          <label>Nomes dos convidados</label>
+          <textarea name="entry.1267430054" required></textarea>
         </div>
 
-        <button type="submit">Confirmar Presença</button>
+        <button type="submit" id="submitBtn">Confirmar Presença</button>
       </form>
     </div>
   </section>
@@ -336,6 +333,32 @@
   <footer>
     <p>Com carinho, <span>Iliene & Junior</span></p>
   </footer>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <div id="toast" class="toast">
+    Presença confirmada com sucesso 💛
+  </div>
+
+  <script>
+    const form = document.getElementById("presenceForm");
+    const toast = document.getElementById("toast");
+    const button = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", () => {
+      button.classList.add("loading");
+
+      setTimeout(() => {
+        button.classList.remove("loading");
+        toast.classList.add("show");
+        form.reset();
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 4000);
+      }, 1200);
+    });
+  </script>
 
 </body>
 
